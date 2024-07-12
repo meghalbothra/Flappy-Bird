@@ -31,4 +31,4 @@ public class birdscript : MonoBehaviour
         logic.gameOver();
         birdIsAlive = false;
     }
-}
+} 
