@@ -19,18 +19,25 @@ public class birdscript : MonoBehaviour
     void Update()
     {
         // Check for input on both PC and mobile devices
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0) && birdIsAlive)
+        if (birdIsAlive)
         {
-            // PC input or touch input
+            // PC input
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                myRigidBody.velocity = Vector2.up * flapStrength;
+                Flap();
             }
-            else if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+
+            // Mobile touch input
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                myRigidBody.velocity = Vector2.up * flapStrength;
+                Flap();
             }
         }
+    }
+
+    void Flap()
+    {
+        myRigidBody.velocity = Vector2.up * flapStrength;
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
